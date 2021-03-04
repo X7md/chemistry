@@ -20,9 +20,7 @@ ul.navbar-nav.me-auto {
     color: transparent;
     border-color: transparent;
 }
-.navbar-toggler:focus {
-    text-decoration: none; 
-    outline: none;
+.navbar-toggler:focus, .btn:focus {
     box-shadow: none;
 }
 div.info-body {
