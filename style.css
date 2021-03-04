@@ -36,16 +36,20 @@ div.info-body {
     padding-top: 10px;
     clip-path: circle(20px at 15px 25px);
 }
-button.btn > span.material-icons-round:active  {
+button.btn:focus {
     animation: arrow;
-    animation-duration: 1.2s;
+    animation-duration: .8s;
+    animation-timing-function: ease-in-out;
 }
 @keyframes arrow {
     0% {
-        clip-path: circle(0px at 15px 25px);
+        clip-path: circle(0px);
+    }
+    35% {
+        clip-path: circle(20px);
     }
     100%{
-        clip-path: circle(20px at 15px 25px);
+        clip-path: circle(40px);
     }
 }
 div.card.info {
