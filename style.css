@@ -10,8 +10,11 @@ body{
 i[class*="material"] {
     user-select: none;
 }
+div.card {
+    margin: .5rem auto;
+}
 ul.navbar-nav.me-auto {
-    padding-right: 0;
+    padding-right: .5em;
 }
 .navbar-light .navbar-toggler {
     color: transparent;
@@ -21,4 +24,40 @@ ul.navbar-nav.me-auto {
     text-decoration: none; 
     outline: none;
     box-shadow: none;
+}
+div.info-body {
+    max-width: 75%;
+}
+.material-icons-round{
+    font-size: 2em;
+    color: #363636;
+}
+.btn > span.material-icons-round  {
+    padding-top: 10px;
+    clip-path: circle(20px at 15px 25px);
+}
+button.btn > span.material-icons-round:active  {
+    animation: arrow;
+    animation-duration: 1.2s;
+}
+@keyframes arrow {
+    0% {
+        clip-path: circle(0px at 15px 25px);
+    }
+    100%{
+        clip-path: circle(20px at 15px 25px);
+    }
+}
+div.card.info {
+    background-color: transparent;
+    margin: .5rem auto;
+    border: 0;
+}
+@media (max-width: 1200px) { 
+    .container [class*="col"]:not([class*="navbar"]){
+        width: 100%;
+    }
+ }
+ [class*='card-title'] {
+    font-weight: bold;
 }
