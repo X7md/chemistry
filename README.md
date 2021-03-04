@@ -1,2 +1,2 @@
 # chemistry
-project for chemistry #4
+[https://git.x7md.net/chemistry/](https://git.x7md.net/chemistry/).
