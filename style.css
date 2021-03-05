@@ -24,7 +24,12 @@ ul.navbar-nav.me-auto {
     box-shadow: none;
 }
 div.info-body {
-    max-width: 75%;
+    max-width: 80%;
+}
+.card[disabled] {
+    user-select: none;
+    pointer-events: none;
+    opacity: .5;
 }
 .material-icons-round{
     font-size: 2em;
@@ -32,22 +37,22 @@ div.info-body {
 }
 .btn > span.material-icons-round  {
     padding-top: 10px;
-    clip-path: circle(20px at 15px 25px);
 }
 button.btn:focus {
     animation: arrow;
-    animation-duration: .8s;
+    animation-duration: .4s;
     animation-timing-function: ease-in-out;
+    background-color: #36363680;
+}
+button.go-to{
+    clip-path: circle(20px);
 }
 @keyframes arrow {
     0% {
         clip-path: circle(0px);
     }
-    35% {
-        clip-path: circle(20px);
-    }
     100%{
-        clip-path: circle(40px);
+        clip-path: circle(20px);
     }
 }
 div.card.info {
