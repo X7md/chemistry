@@ -1,13 +1,13 @@
 let main =  Vue.component('cm-main', {
     data: function () {
       return {
-        arr: []
+        arr: [] // array of objects {title: "", description: "", link: ""}
       }
     },
     mounted: function () {
-      fetch("data/feed-home.json").then((rep)=> rep.json()).then((json_) => this.arr = json_)
-    }
-    ,
+      // get feed of home page cards (( Arrayb of JSON objects ))
+      fetch("data/feed-home.json", {cache: "no-cache"}).then((rep)=> rep.json()).then((json_) => this.arr = json_) // set to arr
+    },
     template: `
     <div class="row">
     <div class="col">
@@ -21,9 +21,11 @@ let main =  Vue.component('cm-main', {
                     <h5 class="card-title">{{ item.title }}</h5>
                   <p class="card-text">{{ item.description }}</p>
                   </div>
-                  <button class="btn me-auto go-to">
+                 <router-link class="me-auto" :to="{ name: 'go-to', params: { title: item.link }}">
+                  <button class="btn go-to">
                     <span class="material-icons-round">west</span>
                   </button>
+                  </router-link>
                 </div>
               </div>
               </div>
@@ -50,9 +52,32 @@ let main =  Vue.component('cm-main', {
             </div>
     `
   })
+let subject =  Vue.component('cm-subject', {
+    data: function () {
+      return {
+        html_: "" // html raw text
+      }
+    },
+    mounted: function () {
+      // get feed of info
+      fetch("data/explain/" + this.$route.params["title"] + ".html", {cache: "no-cache"}).then((rep)=> rep.text()).then((html) => this.html_ = html) // set to arr
+    },
+    template: `
+    <div class="row">
+    <div class="col">
+      <div class="card" dir="rtl">
+        <div class="card-body">
+          <div v-html="html_"></div>
+        </div>
+      </div>
+    </div>
+    </div>
+    `
+  })
 
   const routes = [
     { path: '/', component: main },
+    { path: '/explain/:title', component: subject, name: "go-to" }
   ]
   
   const router = new VueRouter({
