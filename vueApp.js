@@ -8,20 +8,27 @@ let main =  Vue.component('cm-main', {
       // get feed of home page cards (( Arrayb of JSON objects ))
       fetch("data/feed-home.json", {cache: "no-cache"}).then((rep)=> rep.json()).then((json_) => this.arr = json_) // set to arr
     },
+    updated: function () {
+      this.$nextTick(function () {
+        var alertNode = this.$refs["alert"]
+        var alert = bootstrap.Alert.getInstance(alertNode)
+        this.$refs[".btn-close"].addEventListener("click", e => {alert.close()})
+      })
+    },
     template: `
     <div class="row">
     <div class="col">
               <!--
                 Cards
               -->
-              <div v-for="item in arr" :key="item.title">
+              <div v-for="item in arr" :key="item.title" :class="!item.link ? 'x-none' : ''">
               <div class="card" :disabled="!item.link">
                 <div class="card-body d-inline-flex">
                   <div class="info-body">
                     <h5 class="card-title">{{ item.title }}</h5>
                   <p class="card-text">{{ item.description }}</p>
                   </div>
-                 <router-link class="me-auto" :to="{ name: 'go-to', params: { title: item.link }}">
+                  <router-link class="me-auto" :to="{ name: 'go-to', params: { title: item.link }}">
                   <button class="btn go-to">
                     <span class="material-icons-round">west</span>
                   </button>

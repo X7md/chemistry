@@ -34,10 +34,22 @@ div.info-body {
 table {
     max-width: 560px;
 }
+div.x-none {
+    position: relative;
+}
 .card[disabled] {
     user-select: none;
     pointer-events: none;
-    opacity: .5;
+    filter: blur(2px);
+    opacity: 50%;
+}
+div.x-none:after {
+    content: 'قريبًا...';
+    position: absolute;
+    top: 35%;
+    left: 45%;
+    font-weight: 700;
+    font-size: 1.5em;
 }
 .material-icons-round{
     font-size: 2em;
