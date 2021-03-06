@@ -48,7 +48,7 @@ let main =  Vue.component('cm-main', {
                 <div class="card-body">
                   <h5 class="card-title">ضايع وحايس في الكيمياء؟</h5>
                   <p class="card-text">شُّويّة كيمياء هنا عشان تساعدك... عشان تستذكر ما نسيته أو ما لم تفهمه بشكل جيد...</p>
-                  <a href="#" class="card-link">عن المشروع</a>
+                  <router-link to="/page/about-project" class="card-link">عن المشروع</router-link>
                 </div>
               </div>
             </div>
@@ -81,14 +81,39 @@ let subject =  Vue.component('cm-subject', {
     </div>
     `
   })
+  let page =  Vue.component('cm-page', {
+    data: function () {
+      return {
+        html_: "" // html raw text
+      }
+    },
+    mounted: function () {
+      // get feed of info
+      fetch("data/" + this.$route.params["title"] + ".html", {cache: "no-cache"}).then((rep)=> rep.text()).then((html) => this.html_ = html) // set to arr
+    },
+    template: `
+    <div class="row">
+    <div class="col">
+      <div class="card" dir="rtl">
+        <div class="card-body">
+          <div v-html="html_"></div>
+        </div>
+      </div>
+    </div>
+    </div>
+    `
+  })
 
   const routes = [
     { path: '/', component: main },
-    { path: '/explain/:title', component: subject, name: "go-to" }
+    { path: '/explain/:title', component: subject, name: "go-to" },
+    { path: '/page/:title', component: page }
   ]
   
   const router = new VueRouter({
-    routes
+    routes,
+    linkActiveClass: "active",
+    linkExactActiveClass: "exact-active",
   })
   
   
