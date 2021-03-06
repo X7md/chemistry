@@ -40,7 +40,7 @@ div.x-none {
 .card[disabled] {
     user-select: none;
     pointer-events: none;
-    filter: blur(2px);
+    filter: blur(2.5px);
     /* opacity: 50%; */
 }
 div.x-none:after {
