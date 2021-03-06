@@ -41,7 +41,7 @@ div.x-none {
     user-select: none;
     pointer-events: none;
     filter: blur(2px);
-    opacity: 50%;
+    /* opacity: 50%; */
 }
 div.x-none:after {
     content: 'قريبًا...';
