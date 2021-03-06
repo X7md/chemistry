@@ -40,8 +40,8 @@ div.x-none {
 .card[disabled] {
     user-select: none;
     pointer-events: none;
-    filter: blur(2.5px);
-    /* opacity: 50%; */
+    /*filter: blur(2.5px);*/
+    opacity: 35%; 
 }
 div.x-none:after {
     content: 'قريبًا...';
